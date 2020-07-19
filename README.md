@@ -1,0 +1,1 @@
+# Alt-Coin-Applied-Project
