@@ -26,6 +26,8 @@ def getData(x):
         return ['Bitcoinist',title,author,timestamp,textData]
     except:
         print('error')
+        return ['','','','','']
+
 
 
 with open("/home/block/Documents/AppliedProject/Scrape/Assets/bitcoinist.html", "r") as f:
@@ -34,6 +36,6 @@ with open("/home/block/Documents/AppliedProject/Scrape/Assets/bitcoinist.html", 
     sub = soup.find("div", {"class": "infinite-scroll--archive-container"})
     els = sub.findAll('h3',{'class':'title'})
     data = [getData(item) for item in tqdm(els)]
+    print(data)
     df = pd.DataFrame(data,columns = ['Source','Title','Author','TimeStamp','Text'])
-    print(df.shape)
     df.to_csv('/home/block/Documents/AppliedProject/Scrape/Assets/Bitcoinist.csv')
